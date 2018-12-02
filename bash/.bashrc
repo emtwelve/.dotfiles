@@ -3,10 +3,9 @@
 # for examples
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
+
+set -o vi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -25,7 +24,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -85,14 +84,12 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-alias vim=nvim
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -117,7 +114,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export DISPLAY=localhost:0.0
-export LINUX=fernau@fernau-linux
-export HARV=fernau@harv-fernau
+
+alias vim=nvim
+alias v=nvim
+alias mkdir='mkdir -p'
 
