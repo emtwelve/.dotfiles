@@ -119,3 +119,4 @@ alias vim=nvim
 alias v=nvim
 alias mkdir='mkdir -p'
 
+export PATH=$PATH:~/.dotfiles/.scripts
