@@ -119,4 +119,7 @@ alias vim=nvim
 alias v=nvim
 alias mkdir='mkdir -p'
 
+# writes ranger's last visited directory to the .rangerdir file, and then switch to it
+alias r='ranger --choosedir=$HOME/.dotfiles/.rangerdir; cd "$(cat $HOME/.dotfiles/.rangerdir)"; rm $HOME/.dotfiles/.rangerdir'
+
 export PATH=$PATH:~/.dotfiles/.scripts
