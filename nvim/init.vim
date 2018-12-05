@@ -72,6 +72,13 @@ set list
 set number
 set relativenumber
 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow splitright
+
 """"""""""""""
 " Clang format
     let g:clang_format#style_options = {
