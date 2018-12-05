@@ -63,6 +63,10 @@ tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | terminal <args> 
 command! -nargs=* VT vsplit | terminal <args>
 
+" save folds across vim sessions
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 set shell=bash
 set list
 set number
