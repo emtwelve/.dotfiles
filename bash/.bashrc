@@ -26,6 +26,9 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
+# No need to type cd before a directory change with this enabled
+shopt -s autocd
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -56,7 +59,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;35m\](${P4CLIENT})\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -123,3 +126,6 @@ alias mkdir='mkdir -p'
 alias r='ranger --choosedir=$HOME/.dotfiles/.rangerdir; cd "$(cat $HOME/.dotfiles/.rangerdir)"; rm $HOME/.dotfiles/.rangerdir'
 
 export PATH=$PATH:~/.dotfiles/.scripts
+alias treed="find . -type d | sed -e 's/[^-][^\/]*\//  |/g' -e 's/|\([^ ]\)/|-\1/'"
+alias tree="find | sed 's|[^/]*/|- |g'"
+
