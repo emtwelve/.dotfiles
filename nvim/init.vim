@@ -37,9 +37,13 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'francoiscabrol/ranger.vim'
 " Plugin 'vim-scripts/Conque-GDB' " Conque-GDB doesn't work well with neovim
 Plugin 'sakhnik/nvim-gdb'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/cscope.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'vim-scripts/cscope.vim'
+
+" Plugin 'rdnetto/YCM-Generator'
+" Plugin 'jeaye/color_coded' " neovim isn't supported
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,6 +59,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+let g:python3_host_prog = '/usr/bin/python3' " pynvim plugin; YCM requires python support
 
 " easier terminal mode exit
 tnoremap <Esc> <C-\><C-n>
@@ -77,7 +83,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap <leader>jd :YcmCompleter GoToImprecise<CR>
+
 set splitbelow splitright
+set tabstop=2 " size of tab
+set expandtab " tabs to spaces
+set shiftwidth=2 " number of spaces to insert for a tab
 
 """"""""""""""
 " Clang format
@@ -105,3 +116,14 @@ set splitbelow splitright
 "      \ 'key_until': 'u',
 "      \ 'key_breakpoint': 'b',
 "      \ }
+"
+
+
+""""""""""""""
+" cscope
+" nnoremap <leader>ca :call cscope#findInteractive(expand('<cword>'))<CR>
+" nnoremap <leader>cl :call ToggleLocationList()<CR>
+
+"""""""""""""
+" YouCompleteMe
+let g:ycm_min_num_of_chars_for_completion = 1
