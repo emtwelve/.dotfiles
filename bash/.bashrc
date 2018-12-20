@@ -109,6 +109,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ -f ~/.bash_aliases ]; then
     # . ~/.bash_aliases
+    :
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -132,4 +133,6 @@ alias r='ranger --choosedir=$HOME/.dotfiles/.rangerdir; cd "$(cat $HOME/.dotfile
 export PATH=$PATH:~/.dotfiles/.scripts
 alias treed="find . -type d | sed -e 's/[^-][^\/]*\//  |/g' -e 's/|\([^ ]\)/|-\1/'"
 alias tree="find | sed 's|[^/]*/|- |g'"
+alias r='fc -s'
 
+export GTAGSLABEL=pygments
